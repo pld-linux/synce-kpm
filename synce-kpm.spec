@@ -7,12 +7,12 @@ Version:	0.11
 Release:	0.1
 License:	GPL v2
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/synce/synce-kpm-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
 # Source0-md5:	89d3f7352ddc7bc64a44353466da802e
 URL:		http://www.synce.org/
 BuildRequires:	python
 BuildRequires:	rpmbuild(macros) >= 1.213
-#Requires:	PyQT4
+Requires:	python-PyQt4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -20,7 +20,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Device Manager for WM5+ devices for KDE.
 
 %prep
-%setup -q -n synce-kpm-%{version}
+%setup -q
 
 %build
 python setup.py build
