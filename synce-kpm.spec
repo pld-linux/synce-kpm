@@ -1,7 +1,7 @@
 # TODO
-# - pl
 # - python deps
 Summary:	SynCE KDE PDA Manager
+Summary(pl.UTF-8):	Zarządca PDA z projektu SynCE dla KDE
 Name:		synce-kpm
 Version:	0.11
 Release:	0.1
@@ -10,7 +10,8 @@ Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
 # Source0-md5:	89d3f7352ddc7bc64a44353466da802e
 URL:		http://www.synce.org/
-BuildRequires:	python
+BuildRequires:	python >= 1:2.5
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.213
 Requires:	python-PyQt4
 BuildArch:	noarch
@@ -19,15 +20,18 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Device Manager for WM5+ devices for KDE.
 
+%description -l pl.UTF-8
+Zarządca urządzeń WM5+ dla KDE, pochodzący z projektu SynCE.
+
 %prep
 %setup -q
 
 %build
-python setup.py build
+%{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python setup.py install \
+%{__python} setup.py install \
 	--root=$RPM_BUILD_ROOT
 
 %py_postclean
