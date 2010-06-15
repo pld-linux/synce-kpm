@@ -3,16 +3,17 @@
 Summary:	SynCE KDE PDA Manager
 Summary(pl.UTF-8):	Zarządca PDA z projektu SynCE dla KDE
 Name:		synce-kpm
-Version:	0.11
-Release:	0.1
+Version:	0.15
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
-# Source0-md5:	89d3f7352ddc7bc64a44353466da802e
+# Source0-md5:	12130b93710b849e18f72752a6949393
 URL:		http://www.synce.org/
 BuildRequires:	python >= 1:2.5
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.213
+BuildRequires:	python-distribute
 Requires:	python-PyQt4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -36,21 +37,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %py_postclean
 
-install -d $RPM_BUILD_ROOT%{_datadir}/synceKPM
-mv $RPM_BUILD_ROOT{/usr/synceKPM/data/*,%{_datadir}/synceKPM}
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS Changelog README TODO
+%doc AUTHORS ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/synce-kpm
 %dir %{py_sitescriptdir}/synceKPM
-%dir %{py_sitescriptdir}/synceKPM/dialogs
-%dir %{py_sitescriptdir}/synceKPM/util
 %{py_sitescriptdir}/synceKPM/*.py[co]
-%{py_sitescriptdir}/synceKPM/dialogs/*.py[co]
-%{py_sitescriptdir}/synceKPM/util/*.py[co]
+%{py_sitescriptdir}/synceKPM/data
+%dir %{py_sitescriptdir}/synceKPM/dataserver
+%{py_sitescriptdir}/synceKPM/dataserver/*.py[co]
+%dir %{py_sitescriptdir}/synceKPM/gui
+%{py_sitescriptdir}/synceKPM/gui/*.py[co]
 %{py_sitescriptdir}/*.egg-info
-%{_datadir}/synceKPM
