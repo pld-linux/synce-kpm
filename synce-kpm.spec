@@ -13,6 +13,9 @@ BuildRequires:	python-distribute
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 Requires:	python-PyQt4
+Requires:	python-distribute
+Requires:	python-libxslt
+Requires:	python-pyrapi2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
