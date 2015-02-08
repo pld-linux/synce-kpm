@@ -1,19 +1,21 @@
 Summary:	SynCE KDE PDA Manager
 Summary(pl.UTF-8):	Zarządca PDA z projektu SynCE dla KDE
 Name:		synce-kpm
-Version:	0.15
+Version:	0.16
 Release:	1
-License:	GPL v2
-Group:		X11/Applications
+License:	GPL v2+
+Group:		X11/Applications/Networking
 Source0:	http://downloads.sourceforge.net/synce/%{name}-%{version}.tar.gz
-# Source0-md5:	12130b93710b849e18f72752a6949393
+# Source0-md5:	5e4b79e13488010e89c9c523a44945ea
 URL:		http://www.synce.org/
 BuildRequires:	python >= 1:2.5
 BuildRequires:	python-distribute
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.219
 Requires:	python-PyQt4
+Requires:	python-dbus
 Requires:	python-distribute
+Requires:	python-libxml2 >= 2
 Requires:	python-libxslt
 Requires:	python-pyrapi2
 BuildArch:	noarch
@@ -53,4 +55,4 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitescriptdir}/synceKPM/dataserver/*.py[co]
 %dir %{py_sitescriptdir}/synceKPM/gui
 %{py_sitescriptdir}/synceKPM/gui/*.py[co]
-%{py_sitescriptdir}/*.egg-info
+%{py_sitescriptdir}/synce_kpm-%{version}-py*.egg-info
